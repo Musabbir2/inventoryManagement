@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Pos\SupplierController;
+use App\Http\Controllers\Pos\CustomerController;
 
 
 Route::get('/', function () {
@@ -29,11 +30,19 @@ Route::controller(AdminController::class)->group(function () {
 
 });
 
-//supplier route
+//supplier all route
 Route::controller(SupplierController::class)->group(function(){
     Route::get('supplier/all','SupplierAll')->name('supplier.all');
+    Route::get('supplier/add','SupplierAdd')->name('supplier.add');
+    Route::post('supplier/store','SupplierStore')->name('supplier.store');
+    Route::get('supplier/edit/{id}','SupplierEdit')->name('supplier.edit');
+    Route::post('supplier/edit','SupplierUpdate')->name('supplier.update');
+    Route::get('supplier/delete/{id}','SupplierDelete')->name('supplier.delete');
 });
 
+Route::controller(CustomerController::class)->group(function(){
+    Route::get('customer/all','CustomerAll')->name('customer.all');
+});
 
 
 
