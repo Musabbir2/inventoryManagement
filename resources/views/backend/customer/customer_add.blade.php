@@ -11,7 +11,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Add supplier</h4><br><br>
+                            <h4 class="card-title">Add Customer</h4><br><br>
 
 
                             @if(count($errors))
@@ -22,24 +22,22 @@
                             @endif
 
 
-                            <form method="post" action=""  id="myForm">
+                            <form method="post" action="{{route('customer.store')}}"  id="myForm" enctype="multipart/form-data">
                                 @csrf
 
-                                <input type="hidden" name="id" value="{{$suppliers->id}}">
-
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label ">Supplier Name</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label ">Customer Name</label>
                                     <div class="col-sm-10 form-group">
-                                        <input name="name" class="form-control" type="text" value="{{$suppliers->name}}"  id="name">
+                                        <input name="name" class="form-control" type="text"  id="name">
                                     </div>
                                 </div>
                                 <!-- end row -->
 
 
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label ">Supplier Mobile</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label ">Customer Mobile</label>
                                     <div class="col-sm-10 form-group">
-                                        <input name="mobile_no" class="form-control" type="text" value="{{$suppliers->mobile_no}}"  id="mobile_no">
+                                        <input name="mobile_no" class="form-control" type="text"  id="mobile_no">
                                     </div>
                                 </div>
                                 <!-- end row -->
@@ -47,22 +45,37 @@
 
 
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label ">Supplier Email</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label ">Customer Email</label>
                                     <div class="col-sm-10 form-group">
-                                        <input name="email" class="form-control" type="email" value="{{$suppliers->email}}"  id="email">
+                                        <input name="email" class="form-control" type="email"  id="email">
                                     </div>
                                 </div>
                                 <!-- end row -->
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label ">Supplier Address</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label ">Customer Address</label>
                                     <div class="col-sm-10 form-group">
-                                        <input name="address" class="form-control" type="text" value="{{$suppliers->address}}"  id="address">
+                                        <input name="address" class="form-control" type="text"  id="address">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Customer Image </label>
+                                    <div class="col-sm-10 form-group">
+                                        <input name="customer_image" class="form-control" type="file"  id="image">
+                                    </div>
+                                </div>
+                                <!-- end row -->
+
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">  </label>
+                                    <div class="col-sm-10">
+                                        <img id="showImage" class="rounded avatar-lg" src="{{url('upload/no_image.jpg') }}" alt="Card image cap">
                                     </div>
                                 </div>
 
 
 
-                                <input type="submit" class="btn btn-info waves-effect waves-light" value="Update supplier">
+                                <input type="submit" class="btn btn-info waves-effect waves-light" value="Add Customer">
                             </form>
 
 
@@ -93,6 +106,9 @@
                     address : {
                         required : true,
                     },
+                    customer_image :{
+                        required  : true,
+                    },
                 },
                 messages :{
                     name : {
@@ -107,6 +123,9 @@
                     address : {
                         required : 'Please Enter Your Address',
                     },
+                    customer_image :{
+                        required : 'Please Enter your Image'
+                    }
                 },
 
                 errorElement : 'span',
@@ -120,6 +139,20 @@
                 unhighlight : function(element, errorClass, validClass){
                     $(element).removeClass('is-invalid');
                 },
+            });
+        });
+
+    </script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $('#image').change(function(e){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    $('#showImage').attr('src',e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
             });
         });
 
