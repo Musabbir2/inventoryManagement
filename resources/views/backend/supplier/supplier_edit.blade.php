@@ -22,7 +22,7 @@
                             @endif
 
 
-                            <form method="post" action=""  id="myForm">
+                            <form method="post" action="{{route('supplier.update')}}"  id="myForm">
                                 @csrf
 
                                 <input type="hidden" name="id" value="{{$suppliers->id}}">
