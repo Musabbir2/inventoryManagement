@@ -7,6 +7,8 @@ use App\Http\Controllers\Pos\SupplierController;
 use App\Http\Controllers\Pos\CustomerController;
 use App\Http\Controllers\Pos\UnitController;
 use App\Http\Controllers\Pos\CategoryController;
+use App\Http\Controllers\Pos\ProductController;
+
 
 
 Route::get('/', function () {
@@ -61,6 +63,7 @@ Route::controller(UnitController::class)->group(function(){
     Route::get('unit/delete/{id}','UnitDelete')->name('unit.delete');
 });
 
+//category all route
 Route::controller(CategoryController::class)->group(function(){
     Route::get('category/all','CategoryAll')->name('Category.all');
     Route::get('category/add','CategoryAdd')->name('Category.add');
@@ -69,6 +72,15 @@ Route::controller(CategoryController::class)->group(function(){
     Route::post('category/update','CategoryUpdate')->name('Category.Update');
     Route::get('category/delete/{id}','CategoryDelete')->name('Category.delete');
 
+});
+
+Route::controller(ProductController::class)->group(function(){
+    Route::get('product/all','ProductAll')->name('product.all');
+    Route::get('product/add','ProductAdd')->name('product.add');
+    Route::post('product/store','ProductStore')->name('product.store');
+    Route::get('product/edit/{id}','ProductEdit')->name('product.edit');
+    Route::post('product/update','ProductUpdate')->name('product.update');
+    Route::get('product/delete/{id}','ProductDelete')->name('product.delete');
 });
 
 
