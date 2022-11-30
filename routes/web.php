@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Pos\PurchaseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\AdminController;
@@ -74,6 +75,7 @@ Route::controller(CategoryController::class)->group(function(){
 
 });
 
+//product all route
 Route::controller(ProductController::class)->group(function(){
     Route::get('product/all','ProductAll')->name('product.all');
     Route::get('product/add','ProductAdd')->name('product.add');
@@ -83,7 +85,12 @@ Route::controller(ProductController::class)->group(function(){
     Route::get('product/delete/{id}','ProductDelete')->name('product.delete');
 });
 
+//purchase all route
+Route::controller(PurchaseController::class)->group(function(){
+    Route::get('purchase/all','PurchaseAll')->name('purchase.all');
+    Route::get('purchase/add','PurchaseAdd')->name('purchase.add');
 
+});
 
 
 

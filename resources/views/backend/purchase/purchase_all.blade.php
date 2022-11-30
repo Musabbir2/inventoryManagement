@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">products All</h4>
+                        <h4 class="mb-sm-0">Purchase All</h4>
 
 
 
@@ -22,39 +22,42 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <a href="{{route('product.add')}}" class="btn btn-dark btn-rounded waves-effect waves-light float-end">Add Products</a> <br> <br>
-                            <h4 class="card-title">Product All Data </h4>
+                            <a href="" class="btn btn-dark btn-rounded waves-effect waves-light float-end">Add Purchases</a> <br> <br>
+                            <h4 class="card-title">Purchase All Data </h4>
 
 
-                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="datatable" class="table table-bordered dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                 <tr>
                                     <th>Sl</th>
-                                    <th>Name</th>
-                                    <th>Supplier Name</th>
-                                    <th>Unit</th>
+                                    <th>Purchase No</th>
+                                    <th>Date</th>
+                                    <th>Supplier</th>
                                     <th>Category</th>
+                                    <th>Qty</th>
+                                    <th>Product Name</th>
+                                    <th>Status</th>
                                     <th>Action</th>
 
                                 </thead>
 
                                 <tbody>
                                 @php($i = 1)
-                                @foreach($products as $key => $item)
+                                @foreach($allData as $key => $item)
                                     <tr>
                                         <td> {{ $i++}} </td>
-                                        <td> {{ $item->name }} </td>
-                                        <td> {{ $item['supplier']['name']}} </td>
-                                        <td> {{ $item['unit']['name'] }} </td>
-                                        <td> {{ $item['category']['name']}} </td>
+                                        <td> {{ $item->purchase_no }} </td>
+                                        <td> {{ $item->date }} </td>
+                                        <td> {{ $item->supplier_id }} </td>
+                                        <td> {{ $item->category_id }} </td>
+                                        <td> {{ $item->buying_qty }} </td>
+                                        <td> {{ $item->product_id }} </td>
+                                        <td> <span class="btn btn-warning">Pending</span> </td>
 
                                         <td>
                                             <a href="{{route('product.edit',$item->id)}}" class="btn btn-info btn-sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
-
                                             <a href="{{route('product.delete',$item->id)}}" class="btn btn-danger btn-sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
-
                                         </td>
-
                                     </tr>
                                 @endforeach
 
