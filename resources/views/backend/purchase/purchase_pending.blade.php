@@ -22,7 +22,7 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <a href="{{route('purchase.add')}}" class="btn btn-dark btn-rounded waves-effect waves-light float-end"> <i class="fas fa-plus-circle">Add Purchases</i></a> <br> <br>
+                            <a href="{{route('purchase.add')}}" class="btn btn-dark btn-rounded waves-effect waves-light float-end"><i class="fas fa-plus-circle">Pending Purchases</i></a> <br> <br>
                             <h4 class="card-title">Purchase All Data </h4>
 
 
@@ -53,15 +53,15 @@
                                         <td> {{ $item->buying_qty }} </td>
                                         <td> {{ $item['product']['name'] }} </td>
                                         @if($item->status == '0')
-                                        <td> <span class="btn btn-warning">Pending</span></td>
+                                            <td> <span class="btn btn-warning">Pending</span></td>
                                         @elseif($item->status == '1')
-                                        <td> <span class="btn btn-success">Approved</span></td>
+                                            <td> <span class="btn btn-success">Approved</span></td>
                                         @endif
 
                                         @if($item->status == '0')
-                                        <td>
-                                            <a href="{{route('purchase.delete',$item->id)}}" class="btn btn-danger btn-sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
-                                        </td>
+                                            <td>
+                                                <a href="{{route('purchase.approve',$item->id)}}" class="btn btn-danger btn-sm" title="Approved Data" id="ApprovedBtn">  <i class="fas fa-check-circle"></i> </a>
+                                            </td>
                                         @endif
                                     </tr>
                                 @endforeach

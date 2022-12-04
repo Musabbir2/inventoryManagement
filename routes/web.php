@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Pos\DefaultController;
 use App\Http\Controllers\Pos\PurchaseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Demo\DemoController;
@@ -89,6 +90,20 @@ Route::controller(ProductController::class)->group(function(){
 Route::controller(PurchaseController::class)->group(function(){
     Route::get('purchase/all','PurchaseAll')->name('purchase.all');
     Route::get('purchase/add','PurchaseAdd')->name('purchase.add');
+    Route::post('purchase/store','purchaseStore')->name('purchase.store');
+    Route::get('purchase/delete/{id}','purchaseDelete')->name('purchase.delete');
+    Route::get('purchase/pending','purchasePending')->name('purchase.pending');
+    Route::get('purchase/approve/{id}','purchaseApprove')->name('purchase.approve');
+
+});
+
+
+//default all route
+Route::controller(DefaultController::class)->group(function(){
+    Route::get('/get-category','GetCategory')->name('get-category');
+    Route::get('/get-product','GetProduct')->name('get-product');
+
+
 
 });
 

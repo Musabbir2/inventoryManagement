@@ -29,6 +29,8 @@
         <link href="{{ asset('backend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+        <!-- select2-->
+        <link href="{{asset('backend/assets/libs/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css">
 
     </head>
 
@@ -137,6 +139,11 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script src="{{ asset('backend/assets/js/code.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/handlebars.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
+
+    <script src="{{asset('backend/assets/libs/select2/js/select2.min.js')}}"></script>
+    <script src="{{asset('backend/assets/js/pages/form-advanced.init.js')}}"></script>
     </body>
 
 </html>

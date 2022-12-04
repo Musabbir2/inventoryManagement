@@ -22,11 +22,11 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <a href="{{route('product.add')}}" class="btn btn-dark btn-rounded waves-effect waves-light float-end">Add Products</a> <br> <br>
+                            <a href="{{route('product.add')}}" class="btn btn-dark btn-rounded waves-effect waves-light float-end"><i class="fas fa-plus-circle">Add Products</i></a> <br> <br>
                             <h4 class="card-title">Product All Data </h4>
 
 
-                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="datatable" class="table table-bordered dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                 <tr>
                                     <th>Sl</th>

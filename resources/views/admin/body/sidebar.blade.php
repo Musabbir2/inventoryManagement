@@ -80,6 +80,8 @@
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="{{route('purchase.all')}}">All Purchases</a></li>
                                     <li><a href="email-read.html"></a></li>
+                                    <li><a href="{{route('purchase.pending')}}">Approval Purchase</a></li>
+                                    <li><a href="email-read.html"></a></li>
                                 </ul>
                             </li>
 

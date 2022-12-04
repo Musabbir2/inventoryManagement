@@ -22,7 +22,7 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <a href="{{route('Category.add')}}" class="btn btn-dark btn-rounded waves-effect waves-light float-end">Add Categories</a> <br> <br>
+                            <a href="{{route('Category.add')}}" class="btn btn-dark btn-rounded waves-effect waves-light float-end"><i class="fas fa-plus-circle">Add Categories</i></a> <br> <br>
                             <h4 class="card-title">Categories All Data </h4>
 
 
