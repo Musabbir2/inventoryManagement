@@ -90,13 +90,65 @@
                                     </tbody>
                                     <tbody>
                                     <tr>
-                                        <td colspan="4"></td>
+                                        <td colspan="4">Discount</td>
                                         <td>
-                                            <input type="text" name="eastimated_amount" value="0" id="eastimated_amount" class="form-control eastimated_amount" readonly style="background-color: #ddd">
+                                            <input  class="form-control estimated_amount" type="number" name="discount_amount" id="discount_amount" placeholder="Discount Amount">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">Grand Total</td>
+                                        <td>
+                                            <input type="text" name="estimated_amount" value="0" id="estimated_amount" class="form-control estimated_amount" readonly style="background-color: #ddd">
                                         </td>
                                     </tr>
                                     </tbody>
-                                </table>
+                                </table><br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <textarea name="description" id="description" placeholder="Write Description here" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="form-group col-md-3">
+                                        <label>Paid Status</label>
+                                        <select name="paid_status" id="paid_status" class="form-select">
+                                            <option value="">Select Status</option>
+                                            <option value="Full_Paid">Full Paid</option>
+                                            <option value="Full_Due">Full Due</option>
+                                            <option value="Partial_Paid">Partial Paid</option>
+                                        </select>
+                                        <input type="text" name="paid_amount" class="form-control paid_amount" placeholder="Enter paid amount" style="display: none">
+                                    </div>
+                                    <div class="form-group col-md-9">
+                                        <label>Customer Name</label>
+                                        <select name="customer_id" id="customer_id" class="form-select">
+                                            <option value="">Select Status</option>
+                                            @foreach($customer as $cust)
+                                                <option value="{{$cust->id}}">{{$cust->name}}-{{$cust->mobile_no}}</option>
+                                            @endforeach
+                                            <option value="0">New Customer</option>
+
+                                        </select>
+                                    </div>
+                                </div> <br>
+{{--                                hide add customer form--}}
+                                <div class="row new_customer" style="display: none">
+                                   <div class="form-group col-md-4">
+                                       <input type="text" name="name" id="name" class="form-control" placeholder="Write Customer Name">
+                                   </div>
+
+
+                                    <div class="form-group col-md-4">
+                                        <input type="number" name="mobile_no" id="mobile_no" class="form-control" placeholder="Write Customer Mobile number">
+                                    </div>
+
+
+                                    <div class="form-group col-md-4">
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="Write Customer Email">
+                                    </div>
+                                </div>
+                                    <br>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-info" id="storeButton">Purchase Store</button>
                                 </div>
@@ -156,7 +208,7 @@
                 var purchase_no = $('#purchase_no').val();
                 var supplier_id = $('#supplier_id').val();
                 var category_id = $('#category_id').val();
-                var category_name = $('#category_id').find('option:selected').val();
+                var category_name = $('#category_id').find('option:selected').text();
                 var product_id = $('#product_id').val();
                 var product_name = $('#product_id').find('option:selected').text();
 
@@ -204,7 +256,10 @@
                 var qty = $(this).closest("tr").find("input.selling_qty").val();
                 var total = unit_price * qty;
                 $(this).closest("tr").find("input.selling_price").val(total);
-                totalAmountPrice();
+                $('#discount_amount').trigger('keyup');
+                $(document).on('keyup','#discount_amount',function (){
+                    totalAmountPrice();
+                })
             });
             //calculate sum amount in invoice
 
@@ -216,7 +271,11 @@
                         sum += parseFloat(value);
                     }
                 });
-                $('#eastimated_amount').val(sum);
+                let discount_amount = parseFloat($('#discount_amount').val());
+                if(!isNaN(discount_amount)&& discount_amount.length !=0){
+                    sum -= parseFloat(discount_amount);
+                }
+                $('#estimated_amount').val(sum);
             }
         });
     </script>
@@ -258,5 +317,27 @@
             });
         });
 
+    </script>
+    <script type="text/javascript">
+        $(document).on('change','#paid_status',function(){
+            let paid_status = $(this).val();
+            if(paid_status == 'Partial_Paid'){
+                $('.paid_amount').show();
+            }
+            else{
+                $('.paid_amount').hide();
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).on('change','#customer_id',function(){
+            let customer_id = $(this).val();
+            if(customer_id == '0'){
+                $('.new_customer').show();
+            }
+            else{
+                $('.new_customer').hide();
+            }
+        });
     </script>
 @endsection
