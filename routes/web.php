@@ -10,6 +10,7 @@ use App\Http\Controllers\Pos\CustomerController;
 use App\Http\Controllers\Pos\UnitController;
 use App\Http\Controllers\Pos\CategoryController;
 use App\Http\Controllers\Pos\ProductController;
+use App\Http\Controllers\Pos\InvoiceController;
 
 
 
@@ -97,11 +98,20 @@ Route::controller(PurchaseController::class)->group(function(){
 
 });
 
+//invoice all route
+Route::controller(InvoiceController::class)->group(function(){
+    Route::get('invoice/all','InvoiceAll')->name('invoice.all');
+    Route::get('invoice/add','InvoiceAdd')->name('invoice.add');
+
+
+});
+
 
 //default all route
 Route::controller(DefaultController::class)->group(function(){
     Route::get('/get-category','GetCategory')->name('get-category');
     Route::get('/get-product','GetProduct')->name('get-product');
+    Route::get('/check-product','GetStock')->name('check-product-stock');
 
 
 
