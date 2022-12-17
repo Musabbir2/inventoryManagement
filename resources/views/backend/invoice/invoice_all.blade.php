@@ -23,7 +23,7 @@
 
                         <div class="card-body">
                             <a href="{{route('invoice.add')}}" class="btn btn-dark btn-rounded waves-effect waves-light float-end"> <i class="fas fa-plus-circle">Add Invoice</i></a> <br> <br>
-                            <h4 class="card-title">Purchase All Data </h4>
+                            <h4 class="card-title">Invoice All Data </h4>
 
 
                             <table id="datatable" class="table table-bordered dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -42,7 +42,7 @@
                                 @php($i = 1)
                                 @foreach($allData as $key => $item)
                                     <tr>
-                                        <td> {{ $i++}} </td>
+                                        <td> {{ $key+1}} </td>
                                         <td></td>
                                         <td> {{ $item->invoice_no }} </td>
                                         <td> {{ date('d-m-Y',strtotime($item->date))}} </td>

@@ -65,7 +65,7 @@ class InvoiceController extends Controller
                 $invoice->created_by = Auth::user()->id;
                 DB::transaction(function ()use($request,$invoice){
                     if ($invoice->save()){
-                        $count_category = $request->category_id;
+                        $count_category = count($request->category_id);
                         for ($i=0;$i<$count_category;$i++){
                             $invoice_details = new InvoiceDetail();
                             $invoice_details->date = date('Y-m-d',strtotime($request->date));

@@ -171,7 +171,7 @@
 
     <script id="document-template" type="text/x-handlebars-template">
         <tr class="delete_add_more_item" id="delete_add_more_item">
-            <input type="hidden" name="date[]" value="@{{date}}">
+            <input type="hidden" name="date" value="@{{date}}">
             <input type="hidden" name="invoice_no" value="@{{invoice_no}}">
 
             <td>
@@ -257,9 +257,9 @@
                 var total = unit_price * qty;
                 $(this).closest("tr").find("input.selling_price").val(total);
                 $('#discount_amount').trigger('keyup');
-                $(document).on('keyup','#discount_amount',function (){
-                    totalAmountPrice();
-                })
+            });
+            $(document).on('keyup','#discount_amount',function (){
+                totalAmountPrice();
             });
             //calculate sum amount in invoice
 
