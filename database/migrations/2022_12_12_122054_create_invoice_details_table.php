@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('invoice_details', function (Blueprint $table) {
             $table->id();
-            $table->string('date')->nullable();
+            $table->date('date')->nullable();
             $table->integer('invoice_id')->nullable();
             $table->string('category_id')->nullable();
             $table->string('product_id')->nullable();

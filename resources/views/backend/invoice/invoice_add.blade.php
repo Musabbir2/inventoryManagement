@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="card-body">
-                            <form action="{{route('purchase.store')}}" method="post">
+                            <form action="{{route('invoice.store')}}" method="post">
                                 @csrf
                                 <table class="table-sm table-bordered" width="100%" border-color="#ddd">
                                     <thead>
@@ -150,7 +150,7 @@
                                 </div>
                                     <br>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-info" id="storeButton">Purchase Store</button>
+                                    <button type="submit" class="btn btn-info" id="storeButton">Save invoice</button>
                                 </div>
 
                             </form>
